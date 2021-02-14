@@ -7,7 +7,7 @@ using namespace std;
 void male(string name, int n);
 void female(string name, int n);
 
-//Karolis Kucinskas ISI 1 gr. 1 pgr. v0.1
+//Karolis Kucinskas ISI 1 gr. 1 pgr.
 
 int main() {
 
