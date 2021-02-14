@@ -4,8 +4,8 @@
 
 using namespace std;
 
-void male(string name);
-void female(string name);
+void male(string name, int n);
+void female(string name, int n);
 
 //Karolis Kucinskas ISI 1 gr. 1 pgr. v0.1
 
@@ -15,6 +15,17 @@ int main() {
     cout << "Iveskite savo varda:  " << flush;
     try {
         cin >> name;
+    } catch(char* e) {
+        cout << "Ivyko klaida!" << endl;
+        return 0;
+    }
+
+    int n = 2;
+    cout << "Įveskite norimą rėmelio plotį (nutylėta reikšmė yra 2): " << flush;
+    try {
+        cin >> n;
+        if(n == 0)
+            n = 2;
     } catch(char* e) {
         cout << "Ivyko klaida!" << endl;
         return 0;
@@ -34,11 +45,11 @@ int main() {
 
     switch(s) {
         case '1':
-            male(name);
+            male(name, n);
             break;
             
         case '2':
-            female(name);
+            female(name, n);
             break;
         default:
             cout << "Įvyko klaida" << endl;
@@ -47,36 +58,32 @@ int main() {
     return 0;
 }
 
-void male(string name) {
-    string pirma = string(11 + name.size() + 2, '*');
-    cout << pirma << endl;
+void male(string name, int n) {
+    string s = string(11 + name.size() + 2, '*');
+    cout << s << endl;
 
-    string antra = "*" + string(pirma.size()-2, ' ') + "*";
-    cout << antra << endl;
+    for(int i = 0; i < n/2; i++)
+        cout << "*" + string(s.size()-2, ' ') + "*" << endl;
 
-    string trecia = "* Sveikas, " + name + " *";
-    cout << trecia << endl;
+    cout << "* Sveikas, " + name + " *" << endl;
 
-    string ketvirta = antra;
-    cout << ketvirta << endl;
+    for(int i = 0; i < (n/2 + n%2); i++)
+        cout << "*" + string(s.size()-2, ' ') + "*" << endl;
 
-    string penkta = pirma;
-    cout << penkta << endl;
+    cout << s << endl;
 }
 
-void female(string name) {
-    string pirma = string(10 + name.size() + 2, '*');
-    cout << pirma << endl;
+void female(string name, int n) {
 
-    string antra = "*" + string(pirma.size()-2, ' ') + "*";
-    cout << antra << endl;
+    string s = string(10 + name.size() + 2, '*');
+    cout << s << endl;
 
-    string trecia = "* Sveika, " + name + " *";
-    cout << trecia << endl;
+    cout << "*" + string(s.size()-2, ' ') + "*" << endl;
 
-    string ketvirta = antra;
-    cout << ketvirta << endl;
+    cout << "* Sveika, " + name + " *" << endl;
 
-    string penkta = pirma;
-    cout << penkta << endl;
+    cout << "*" + string(s.size()-2, ' ') + "*" << endl;
+
+    cout << s << endl;
+
 }
